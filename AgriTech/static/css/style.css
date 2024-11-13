@@ -1,49 +1,20 @@
 /********** Template CSS **********/
 :root {
-    --primary: #F3525A;
-    --secondary: #F6F6F6;
-    --light: #FFFFFF;
-    --dark: #152440;
-}
-
-h1,
-h2,
-.font-weight-bold {
-    font-weight: 700 !important;
-}
-
-h3,
-h4,
-.font-weight-semi-bold {
-    font-weight: 600 !important;
-}
-
-h5,
-h6,
-.font-weight-medium {
-    font-weight: 500 !important;
-}
-
-.pt-6 {
-    padding-top: 90px;
-}
-
-.pb-6 {
-    padding-bottom: 90px;
-}
-
-.py-6 {
-    padding-top: 90px;
-    padding-bottom: 90px;
+    --primary: #34AD54;
+    --secondary: #FF9933;
+    --light: #F6FFF2;
+    --dark: #263A4F;
 }
 
 .btn {
-    font-family: 'Barlow', sans-serif;
-    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 700;
     transition: .5s;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary {
     color: #FFFFFF;
 }
 
@@ -73,59 +44,39 @@ h6,
 .back-to-top {
     position: fixed;
     display: none;
-    right: 45px;
-    bottom: 45px;
+    right: 30px;
+    bottom: 0;
+    border-radius: 0;
     z-index: 99;
 }
 
-.top-shape::before {
-    position: absolute;
-    content: "";
-    width: 35px;
-    height: 100%;
-    top: 0;
-    left: -17px;
-    background: var(--primary);
-    transform: skew(40deg);
-}
-
-.navbar-light .navbar-nav .nav-link {
-    font-family: 'Barlow', sans-serif;
-    padding: 35px 15px;
-    font-size: 18px;
+.navbar-dark .navbar-nav .nav-link {
+    padding: 30px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
     text-transform: uppercase;
-    color: var(--dark);
-    outline: none;
     transition: .5s;
 }
 
-.sticky-top.navbar-light .navbar-nav .nav-link {
+.sticky-top.navbar-dark .navbar-nav .nav-link {
     padding: 20px 15px;
 }
 
-.navbar-light .navbar-nav .nav-link:hover,
-.navbar-light .navbar-nav .nav-link.active {
-    color: var(--primary);
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    background: var(--secondary);
 }
 
 @media (max-width: 991.98px) {
-    .navbar-light .navbar-nav .nav-link  {
-        padding: 10px 0;
+    .navbar-dark .navbar-nav .nav-link  {
+        padding: 10px;
     }
 }
 
-.carousel-caption {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(21, 36, 64, .7);
-    z-index: 1;
-}
-
 @media (max-width: 576px) {
-    .carousel-caption h5 {
-        font-size: 14px;
+    .carousel-caption h4 {
+        font-size: 18px;
         font-weight: 500 !important;
     }
 
@@ -146,103 +97,166 @@ h6,
     height: 3rem;
 }
 
-.service-item {
-    position: relative;
-    overflow: hidden;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: .3s;
+.bg-hero {
+    background: url(../img/carousel-1.jpg) top right no-repeat;
+    background-size: cover;
 }
 
-.service-item::after {
+@media (min-width: 991.98px) {
+    .banner {
+        position: relative;
+        margin-top: -90px;
+        z-index: 1;
+    }
+}
+
+.bg-vegetable {
+    background: linear-gradient(rgba(52, 173, 84, .2), rgba(52, 173, 84, .2)), url(../img/vegetable.png) bottom right no-repeat;
+    background-size: contain;
+}
+
+.bg-fruit {
+    background: linear-gradient(rgba(255, 153, 51, .2), rgba(255, 153, 51, .2)), url(../img/fruit.png) bottom right no-repeat;
+    background-size: contain;
+}
+
+.service-item {
+    box-shadow: 0 0 45px #EDEDED;
+    transition: .5s;
+}
+
+.about i,
+.service-item i {
+    background-image: linear-gradient(var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: .5s;
+}
+
+.service-item:hover {
+    color: var(--light);
+    background: var(--primary) !important;
+}
+
+.service-item:hover i {
+    background-image: linear-gradient(var(--light), var(--secondary));
+}
+
+.service-item:hover h4 {
+    transition: .5s;
+}
+
+.service-item:hover h4 {
+    color: var(--light);
+}
+
+.product-item {
+    padding: 0 30px 30px 30px;
+}
+
+.product-item .btn-action {
+    position: absolute;
+    width: 100%;
+    bottom: -40px;
+    left: 0;
+    opacity: 0;
+    transition: .5s;
+}
+
+.product-item:hover .btn-action {
+    bottom: 0;
+    opacity: 1;
+}
+
+.product-item h5 {
+    transition: .5s;
+}
+
+.product-item:hover h5 {
+    opacity: 0;
+}
+
+.product-carousel::after {
     position: absolute;
     content: "";
     width: 100%;
-    height: 50px;
-    bottom: -50px;
+    height: 55%;
+    bottom: 0;
     left: 0;
-    background: var(--light);
-    border-radius: 100% 100% 0 0;
-    box-shadow: 0px -10px 5px #EEEEEE;
-    transition: .5s;
+    background: url(../img/bg-product-1.png) left bottom no-repeat, url(../img/bg-product-2.png) right bottom no-repeat;
+    background-size: contain;
+    background-color: var(--primary);
+    z-index: -1;
 }
 
-.service-item:hover::after {
-    bottom: -25px;
-}
-
-.service-item p {
-    transition: .3s;
-}
-
-.service-item:hover p {
-    margin-bottom: 25px !important;
-}
-
-.team-item img {
-    transform: scale(1.15);
-    margin-left: -30px;
-    transition: .5s;
-}
-
-.team-item:hover img {
-    margin-left: 0;
-}
-
-.team-item .team-text {
-    left: -100%;
-    transition: .5s;
-}
-
-.team-item .team-text::after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 0;
-    top: 50%;
-    right: -60px;
-    margin-top: -30px;
-    border: 30px solid;
-    border-color: transparent transparent transparent var(--primary);
-}
-
-.team-item:hover .team-text {
-    left: 0;
-}
-
-.testimonial-carousel .owl-nav {
-    margin-top: 30px;
+.product-carousel .owl-nav {
+    width: 100%;
+    text-align: center;
     display: flex;
-    justify-content: start;
+    justify-content: center;
 }
 
-.testimonial-carousel .owl-nav .owl-prev,
-.testimonial-carousel .owl-nav .owl-next{
+.product-carousel .owl-nav .owl-prev,
+.product-carousel .owl-nav .owl-next{
     position: relative;
-    margin: 0 5px;
-    width: 45px;
+    width: 55px;
     height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #FFFFFF;
-    background: var(--primary);
+    color: var(--primary);
+    background: #FFFFFF;
     font-size: 22px;
-    border-radius: 45px;
+    transition: .5s;
+}
+
+.product-carousel .owl-nav .owl-prev:hover,
+.product-carousel .owl-nav .owl-next:hover {
+    color: var(--secondary);
+}
+
+.bg-testimonial {
+    background: url(../img/testimonial.jpg) top center no-repeat;
+    background-size: cover;
+}
+
+.testimonial-carousel {
+    background: rgba(52, 173, 84, .7);
+}
+
+.testimonial-carousel .owl-nav {
+    position: absolute;
+    width: calc(100% + 46px);
+    height: 46px;
+    top: calc(50% - 23px);
+    left: -23px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    background: #FFFFFF;
+    font-size: 22px;
     transition: .5s;
 }
 
 .testimonial-carousel .owl-nav .owl-prev:hover,
 .testimonial-carousel .owl-nav .owl-next:hover {
-    color: var(--dark);
+    color: var(--secondary);
 }
 
 .testimonial-carousel .owl-item img {
-    width: 90px;
-    height: 90px;
+    width: 120px;
+    height: 120px;
 }
 
 .blog-item img {
@@ -250,5 +264,31 @@ h6,
 }
 
 .blog-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.2);
+}
+
+.blog-overlay {
+    position: absolute;
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    background: linear-gradient(rgba(52, 173, 84, 0), rgba(52, 173, 84, 1));
+    z-index: 1;
+}
+
+.bg-footer {
+    background: linear-gradient(rgba(52, 173, 84, .7), rgba(52, 173, 84, .7)), url(../img/footer.png) center bottom no-repeat;
+    background-size: contain;
+}
+
+@media (min-width: 991.98px) {
+    .bg-footer {
+        margin-top: 90px !important;
+    }
 }
